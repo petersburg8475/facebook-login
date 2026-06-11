@@ -1,35 +1,55 @@
-import { Pressable, StyleSheet, Text, TextInput } from "react-native";
+import {
+  Dimensions,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View } from "react-native-web";
 
-let Index = () => {
+const height = Dimensions.get("window").height;
+const width = Dimensions.get("window").width;
+// Destructure width and height from the hook
+// const { width, height } = useWindowDimensions();
+
+const Index = () => {
   return (
     <SafeAreaView style={styles.background}>
-      <Text style={[styles.text, { fontWeight: "bold", fontSize: 24 }]}>
-        facebook
-      </Text>
-      <View>
-        <TextInput placeholder="email or phone" style={styles.input} />
+      <View style={{ alignItems: "center", marginBottom: height / 4 }}>
+        <Text style={[styles.text, { fontWeight: "bold", fontSize: 40 }]}>
+          facebook
+        </Text>
+        <View>
+          <TextInput
+            placeholder="email or phone"
+            placeholderTextColor="#999999"
+            style={[styles.input, { width: (width / 4) * 3 }]}
+          />
+        </View>
+        <View>
+          <TextInput
+            placeholder="password"
+            placeholderTextColor="#999999"
+            style={[styles.input, { width: (width / 4) * 3 }]}
+            secureTextEntry
+          />
+        </View>
+        <Pressable style={[styles.button, { width: (width / 4) * 3 }]}>
+          <Text style={styles.text}>log in</Text>
+        </Pressable>
       </View>
-      <View>
-        <TextInput
-          placeholder="password"
-          style={styles.input}
-          secureTextEntry
-        />
-      </View>
-      <Pressable style={styles.button}>
-        <Text style={styles.text}>log in</Text>
-      </Pressable>
     </SafeAreaView>
   );
 };
 
 let styles = StyleSheet.create({
   button: {
-    backgroundColor: "#053471",
+    backgroundColor: "#162941",
     marginVertical: 5,
     padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     color: "white",
@@ -45,7 +65,7 @@ let styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    backgroundColor: "#1877F2",
+    backgroundColor: "#3d5589",
     justifyContent: "center",
     alignItems: "center",
   },
